@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: test-task
+  config:
+    import: optional:classpath:external.yml
+
+db:
+  data-sources:
+    - name: data-base-1
+      suffix:
+      id-type: Number
+      strategy: org.postgresql.Driver
+      url: ${POSTGRES_URL}
+      table: users
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASS}
+      mapping:
+        id: user_id
+        username: login
+        name: first_name
+        surname: last_name
+    - name: data-base-2
+      suffix: 1
+      id-type: String
+      strategy: com.mysql.cj.jdbc
+      url: ${MYSQL_URL}
+      table: user_table
+      user: ${MYSQL_USER}
+      password: ${MYSQL_PASS}
+      mapping:
+        id: ldap_login
+        username: ldap_login
+        name: name
+        surname: surname

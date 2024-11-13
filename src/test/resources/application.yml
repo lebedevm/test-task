@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: test-task
+#  main:
+#    allow-bean-definition-overriding: true
+
+db:
+  data-sources:
+    - name: data-base-1
+      suffix:
+      id-type: Number
+      strategy: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5433/database1
+      table: users
+      user: postgresuser
+      password: postgrespass
+      mapping:
+        id: user_id
+        username: login
+        name: first_name
+        surname: last_name
+    - name: data-base-2
+      suffix: 1
+      id-type: String
+      strategy: com.mysql.cj.jdbc
+      url: jdbc:mysql://localhost:3307/database2
+      table: user_table
+      user: mysqluser
+      password: mysqlpass
+      mapping:
+        id: ldap_login
+        username: ldap_login
+        name: name
+        surname: surname

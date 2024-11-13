@@ -1,0 +1,7 @@
+POSTGRES_URL: jdbc:postgresql://postgres:5432/database1
+POSTGRES_USER: postgresuser
+POSTGRES_PASS: postgrespass
+
+MYSQL_URL: jdbc:mysql://mysql:3306/database2
+MYSQL_USER: mysqluser
+MYSQL_PASS: mysqlpass

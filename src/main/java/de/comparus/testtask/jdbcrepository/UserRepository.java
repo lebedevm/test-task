@@ -1,7 +1,7 @@
 package de.comparus.testtask.jdbcrepository;
 
 import de.comparus.testtask.config.DbInfo;
-import de.comparus.testtask.jdbsmapper.UserMapper;
+import de.comparus.testtask.jdbcmapper.UserMapper;
 import de.comparus.testtask.model.QueryCondition;
 import de.comparus.testtask.model.User;
 import lombok.RequiredArgsConstructor;

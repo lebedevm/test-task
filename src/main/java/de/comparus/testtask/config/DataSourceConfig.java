@@ -10,7 +10,9 @@ import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toMap;
+import static java.util.stream.Collectors.toSet;
 
 @Configuration
 public class DataSourceConfig {
@@ -31,7 +33,7 @@ public class DataSourceConfig {
     @Bean
     public Map<String, DataSource> dataSources(ApplicationProperties applicationProperties) {
         return applicationProperties.getDataSources().stream()
-                .collect(Collectors.toMap(DbProperties::name, this::buildDataSource));
+                .collect(toMap(DbProperties::name, this::buildDataSource));
     }
 
     private DataSource buildDataSource(DbProperties dbProperties) {
@@ -45,13 +47,13 @@ public class DataSourceConfig {
     @Bean
     public Map<String, JdbcTemplate> jdbcTemplates(Map<String, DataSource> dataSources) {
         return dataSources.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> new JdbcTemplate(e.getValue())));
+                .collect(toMap(Map.Entry::getKey, e -> new JdbcTemplate(e.getValue())));
     }
 
     @Bean
     public Map<String, DbInfo> userQueries(ApplicationProperties applicationProperties) {
         return applicationProperties.getDataSources().stream()
-                .collect(Collectors.toMap(
+                .collect(toMap(
                         DbProperties::name,
                         p -> new DbInfo(createUserQuery(p), p.mapping().id(), p.mapping().username())
                 ));
@@ -71,7 +73,7 @@ public class DataSourceConfig {
         return applicationProperties.getDataSources().stream()
                 .filter(p -> p.idType() != null && p.idType().equals("Number"))
                 .map(DbProperties::name)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
 }
 

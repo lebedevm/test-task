@@ -12,10 +12,3 @@ public class TestTaskApplication {
         SpringApplication.run(TestTaskApplication.class, args);
     }
 }
-
-/*
-http://localhost:8080/users?username=a
-http://localhost:8080/users
-http://localhost:8080/users/1
-http://localhost:8080/users/damiani
- */

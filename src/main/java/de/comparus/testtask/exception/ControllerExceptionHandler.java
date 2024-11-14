@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import static java.util.stream.Collectors.joining;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Slf4j
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    public static final DateTimeFormatter FORMAT_HTTP = DateTimeFormatter.ofPattern("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
+    private static final DateTimeFormatter FORMAT_HTTP = DateTimeFormatter.ofPattern("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
 
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<ValidationMessage> validationExceptionHandler2(HttpServletRequest request,
@@ -37,7 +37,7 @@ public class ControllerExceptionHandler {
                 request.getServletPath(),
                 errors.stream()
                         .map(ValidationParamError::toString)
-                        .collect(Collectors.joining(",\n")));
+                        .collect(joining(",\n")));
         return ResponseEntity.badRequest().body(validationMessage);
     }
 
@@ -65,7 +65,6 @@ public class ControllerExceptionHandler {
                 errors,
                 request.getServletPath());
     }
-
 
     private record ValidationParamError(
             String param,

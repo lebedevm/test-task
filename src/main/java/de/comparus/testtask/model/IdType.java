@@ -4,7 +4,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public enum IdType {
-
     TEXT {
         @Override
         public Predicate<String> limit(Set<String> numericDbNames) {

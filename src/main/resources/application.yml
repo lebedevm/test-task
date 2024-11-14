@@ -9,7 +9,6 @@ db:
     - name: data-base-1
       suffix:
       id-type: Number
-      strategy: org.postgresql.Driver
       url: ${POSTGRES_URL}
       table: users
       user: ${POSTGRES_USER}
@@ -22,7 +21,6 @@ db:
     - name: data-base-2
       suffix: 1
       id-type: String
-      strategy: com.mysql.cj.jdbc
       url: ${MYSQL_URL}
       table: user_table
       user: ${MYSQL_USER}

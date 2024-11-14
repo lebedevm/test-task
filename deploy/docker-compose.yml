@@ -1,5 +1,4 @@
 services:
-
   postgres:
     image: postgres:latest
     environment:
@@ -13,7 +12,6 @@ services:
       - app-network
     ports:
       - "5432:5432"
-
   mysql:
     image: mysql:latest
     environment:
@@ -28,7 +26,6 @@ services:
       - app-network
     ports:
       - "3306:3306"
-
   springboot-app:
     build: .
     ports:

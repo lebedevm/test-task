@@ -1,4 +1,4 @@
-package de.comparus.testtask.jdbsmapper;
+package de.comparus.testtask.jdbcmapper;
 
 import de.comparus.testtask.model.User;
 import org.springframework.jdbc.core.RowMapper;
